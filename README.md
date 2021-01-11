@@ -57,3 +57,61 @@ lo cual es un valor por encima del valor que podría representar los datos de un
 Aunque las funciones son útiles para clasificar, hay que tomar en cuenta que no son la mejor manera de medir probabilidades. Al ser una función linear, es capaz de resultar en valores mayores a uno y menores a cero. Esto no nos sirve si estamos midiendo probabilidades. Al presentar el problema de esta forma, podemos producir valores negativos o que son demasiado grandes. 
 
 ## Clasificación Logística
+
+Transformar una función de clasificación linear en una función de clasificación sigmoidal es muy útil cuando estamos trabajando con probabilidades. 
+
+![Sigmoide](https://lucashomil.github.io/datascience/images/sigmoid-function-sized.png) 
+
+Sin embargo, existe una forma de calcula una función sigmoidal de manera más directa. A esta se le conoce como la clasificación logística. Supopngamos que tenemos *n* cantidad de variables *x1, x2,... xn* usando una clasificación logística que calcula pesos *m1, m2, ... mn* y un sesgo en donde el sigmoide σ (*m1x1 + m2x2 + ... mn xn + b*) descibe bastante bien a nuestros datos.
+
+Un ejemplo sería el siguiente:
+
+![Linea sigmoide](https://ds055uzetaobb.cloudfront.net/brioche/uploads/d5R21cBp7B-2-2-1actual.png?width=1200)
+
+Acá hay una variable predictora y cada punto tiene un valor 1 cuando es cierto o 0 cuando es nulo. La sigmoide está diseñada para maximizar la probabilidad de clasificar correctamente entre dos clases. Esto es diferente a una clasificación con una matriz de indicadores, ya que hay una sola función para dos clases y no una función por cada clase.
+
+Supongamos que queremos saber la probabilidad de que un alumno con promedio GPA de 3.2 (*x1*) y con 15 años de edad (*x2*) podría pasar un examen, dado que los pesos de cada valor es de *m1* = 5, *m2* = 1 y el sesgo *b* = -29.
+
+Utilizando la función de la sigmoide podemos ver que:
+
+    *f*(3.2, 15) = 5 ⋅ 3.2 + 1 ⋅ 15 - 29 = 2
+    
+    σ(f(3.2,15)) = σ(2)
+    
+                 = e² / 1 + e² 
+                                
+                 = 0.88
+                 
+Con la regresión logística creamos una función sigmoidal que describe nuestros datos. A esto tendríamos que agregar la propiedad de maximización. 
+
+Supongamos que tenemos dos clases: una positiva y una negativa. Para generar una función de mejor ajuste tenemos que analizar un conjunto de data points, los cuales sabemos que pertenecen a una de las dos clases. La función final (*p ->x*) nos dará la posibilidad de un *-> x* positivo.
+
+Hay que tomar en cuenta que no todas las funciones de probabilidad son iguales. Hay que diferenciar entre calcular las probabilidades de nuestro data set dadas las clasificaciones dado que una función de probabilidad *p(-> x)* sea correcta. Esto significa usar *p(-> x)* para calcular la probabilidad de que cada data point esté en una clase y luego tomar los productos de los resultados.
+
+Si asignamos a cada punto *-> xi* una variable *yi* que esta puesta a 1 si *-> x* es positiva y 0 si es negativa. Expresado matemáticamente se vería así:
+
+![funcion sigmoide](asdsa.as)
+
+Esta cantidad, la probabilidad de que todos los puntos conocidos tengan una clase es lo que llamamos maximización en algoritmos de clasificación logística. El proceso es conocido como el **método de máxima verosimilitud** porque encontramos la similitud más posible en una función sigmoide.
+
+Dado que la máxima verosimilitud es resultado de probabilidades, el techo siempre será 1 que significará una similitud exacta. Todas las probabilidades serán resultado de una función logística. Sin embargo, las probabilidades nunca serán 1 o 0. 
+
+Por ejemplo, si tenemos eventos independientes respecto a las probabilidades de sacar una bola roja entre bolas azules. Podríamos calcular las probabilidades  tomando dos mundos en (3,2) y (-5,3). La probabilidad de sacar la bola roja es simplemente: 1 - *p(x,y)*, lo que es igual a:
+
+    P = p(3, 2)(1 - p(-5,3))
+    
+      =     e⁶/1 + e⁶ ⋅ (1 - e⁻1/ 1 + e⁻1)
+      
+      = 0.73
+      
+Hasta este momento hemos estimados las probabilidades de una regresión logística, más no como hacer una clasificación. Las clasificaciones son usualmente hechas poniendo un límite de probabilidades para dividir dos clases.
+
+Por ejemplo, si clasificamos entre rojo y azul y los límites de probabilidad so *p* = 0.8. Los únicos puntos sobre el 80% serán clasificados como rojo. Por lo general los limites de probabilidad están basados en las necesidades de la situación. En situaciones reales, el límite puede ser bajo si el resultado no tiene grandes implicaciones. Pero si fuera el caso, habría que levantarlo por precaución (imagina si tuvieramos que determinar si una persona tiene una enfermedad seria o no).
+
+Alternativamete, podríamos tomar una función logística y tranformarla en logarítmica. Tomando el logaritmo de una regresión logística nos da una función linear que matemáticamente se ve así:
+
+![mate logarítmica](asdas.as)
+
+Esta función linear se le conoce como logit. Aunque no es buena calculando probabilidades, es útil para comparasiones y optimizaciones. Esta es una alternativa cuando tenemos resultados extraños con una función logística.
+
+## Análisis Discriminante Linear
