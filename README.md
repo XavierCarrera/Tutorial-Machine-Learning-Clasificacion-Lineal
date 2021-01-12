@@ -115,3 +115,68 @@ Alternativamete, podríamos tomar una función logística y tranformarla en loga
 Esta función linear se le conoce como logit. Aunque no es buena calculando probabilidades, es útil para comparasiones y optimizaciones. Esta es una alternativa cuando tenemos resultados extraños con una función logística.
 
 ## Análisis Discriminante Linear
+
+Con regregresión lineal podemos predecir correctamente la clase a la que perenecen unos data points. Sin embargo, este enfoque puede ser inestable ya que genera una linea directamente de los datos. 
+
+Una alternativa es crear funciones de probabilidad basadas directamente en estadística. Aunque tenemos que hacer muchas suposiciones, el resultado final es una alternativa poderosa la clasificación logística.
+
+Primero, asumimos que nuetros data points pueden ser encontrados en una distribución gaussiana y que los puntos de diferentes clases tienen desviaciones estándard. Este conjunto de suposiciones nos dan una técninca de clasificación conocida como el análisis discriminante. 
+
+Acá tenemos un ejemplo de un data set con dos clases y dos variables predictoras que responderían bien a un análisis discriminante. Hay que notar que los puntos se separan de la clase. Esta es una indicación de que estamos tratando con una distribución gaussiana. 
+
+![Dispersión distribución gaussiana](https://ds055uzetaobb.cloudfront.net/brioche/uploads/ux0zYKQdZx-ch2-1.png?width=1200)
+
+Acá es donde podemos usar el teorema de Bayes, que indica que dos eventos *A* y *B* son posibles.
+
+![Teorema de Bayes](https://wikimedia.org/api/rest_v1/media/math/render/svg/9e246bd8f652b1317907a108b8cb0215977ad798)
+
+Digamos que tenemos un punto *->x* y queremos encontrar la probabilidad de que sea de la clase *A*. En este caso solo sabemos que:
+
+1. Sabemos que un punto aleatorio en la clase *A* tiene un 30% de posibilidades de ser igual a *-> x*.
+2. Sin ningún conocimiento previo, hay 50% de posibilidades de que un punto aleatorio sea *-> x*.
+3. Hay 10% de posibilidad que el punto aleatorio este en clase *A*. 
+
+En este caso la respuesta sería la siguiente:
+
+    = 0.3 ⋅ 0.1 / 0.5
+    
+    = 0.06
+    
+Sin embargo, a veces podemos tener problemas usando el Teorema de Bayes para clasificar datos que necesita de datos que no tenemos. Dado un punto *-> x*, no sabemos la probabilidad de que un punto ocmo *-> x* sea tomado como *P(X = x)*, la probabilidad de que un punto aleatorio este en cierta clase como *k* como *P(k)* o la posibilidad de que un punto *-> x* esté en la clase *k*: *P(X = x|k*).
+
+Aún así y con nuestra suposiciones en las distribución de puntos y sus desviaciones estándard, sería posible tener una buena estimación de estos valores.
+
+El primer paso es estimar la posibilildad de que un punto aleatorio este en una clase. Para la clase *k*, esto se escribe así: πk. Asumiremos que las proporciones de cada clase entre los puntos en el data set será relativamente constante con los puntos nuevos que encontremos. 
+
+Ahora, necesitamos calcular la probabilidad de densidad para los puntos en cada clase. El prerequisito para esto es poder calcular los centros de las distribuciones de cada clase y el promedio de la varianza de todo el set. Al tener *k* clases podemos calcular sus promedios con μk, pero solo con el valor promedio de la varianza σ². Estamos asumiendo que las varianzas de cada clases son iguales, por lo que solo necesitamos un valor.
+
+Cuando hay múltiples variables predictoras, una matriz de valores de covarianza es necesaria para representar adecuadamente las varianzas de las distribuciones gaussianas. En este caso, lo podemos entender con la varianza de un conjunto de puntos que tanto están alejados de su promedio. Antes de calcular la varianza de estos data points, tenemos que eliminar el promedio con la siguiente formula:
+
+![promedio varianza](asdasdas.as)
+
+Aquí *yi* representa la clase de *xi*. Su valor puede ir de 1 a *K*. Adicionalmente, *nk* es el número de data points en la clase *k*.
+
+Con el promedio de cada clase calculada, es ahora posible calcular la varianza con la siguiente fórmula: 
+
+
+![promedio varianza](asdasdas.as)
+
+Finalmente, tenemos que tener los valores que necesitamos para calcular la probabilidad que el punto *x* esté en la clase *k*.
+
+Sin embargo, tenemos que formalmente definir una distribución gaussiana primero. Con la varianza σ² y un promedio μk que sigue la distribución gaussiana significa que 
+
+![promedio varianza](asdasdas.as)
+
+Adicionalmente, dado que cada punto debe estar una de nuestras clases, *P(X = x)* es la suma de *P(X = x|k)* por 1 ≤ *k* ≤ *K* y *P(k)* es igual al πk que hemos calculado antes. 
+
+Por ello nuestro teorema se ve así: 
+
+![Teorema de Bayes](varianza)
+
+Esto nos da la función *pk(x)* = *P(k|X = x)* que nos indica que nuestra certeza de que el punto *x* está en la clase *k*. Si los puntos en nuestro data set tienen una varianza constante y siguen perfectamente distribuciones gaussianas, esta probabilidad está cerca a nuestra mejor estimación. Sin embargo, esta función es muy precica aún con las limitaciones de la vida real. Especialmente cuando hay más de dos clases, tiene un desempeño mejor que la regresión logística.
+
+Por ejemplo, si tenemos *n* cantidad de puntos y dos clases, un data point *x = μ1* con el que calculamos *P(X = x)* = 0.28 usando el análisis de discriminación linear. Podemos usarlo para calcular el 50% de posbilidades para que *x* esté en la clase 1 y encontrar que σ² = 1. Esto significaría que:
+
+    π1 = √2π ⋅ (0.5 ⋅ 0.28) = 0.35
+    
+## Clasificación KNN
