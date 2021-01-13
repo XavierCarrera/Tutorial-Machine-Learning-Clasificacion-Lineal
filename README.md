@@ -180,3 +180,25 @@ Por ejemplo, si tenemos *n* cantidad de puntos y dos clases, un data point *x = 
     π1 = √2π ⋅ (0.5 ⋅ 0.28) = 0.35
     
 ## Clasificación KNN
+
+La clasificación linear no es el único tipo de algoritmo de clasificación. Existen varias alternativas no-lineares, de las cuales la clasificación del vecino *k* más cercano (KNN por sus siglas en inglés) es la más simple. 
+
+Para usar esta técnica de un punto dado *-> x*, empezamos identificandos los puntos *k* más cercanos a *-> x* en el data set. Después clasificamos a *-> x* a cualquier clase que se muestre más frecuentemente de estos puntos *k*. Esta sería un ejemplo de clasificación con *k*=6.
+
+![KNN](https://ds055uzetaobb.cloudfront.net/brioche/uploads/GEZiVRehM0-ch2-3-1-finished.png?width=1200)
+
+Sin embargo, puede haber un problema como el siguiente:
+
+![KNN](https://ds055uzetaobb.cloudfront.net/brioche/uploads/Xzni1Tghzu-ch2-3-2-finished.png?width=1200)
+
+El punto negro sería clasificado como rojo porque de los 7 puntos más cercanos, 5 son rojos. Aún cuando parece que se ubica en territorio de puntos azules. Lo anterior se debe a la diferencia en la densidad de clases. Si una clase es muy común y la otra es rara, la clasificación KNN tendrá un sesgo hacía la popular.
+
+Una solución común es dar pesos a los data points por el inverso de su distancia desde el punto que está siendo clasificado. Esto significa, dar a los puntos más alejados menos importancia de voto cuando se determina si un punto pertenece a una clase.
+
+Para que KNN sea efectivo, la densidad de puntos en un data set debe alcanzar cierto nivel alrededor de un punto siendo clasificado. Si intentamos clasificar un punto en una area vacía, tomaremos nuestra decisión basada en los data points que estan más alejados de nuestro punto de interés y tendremos resultados inútiles.
+
+Si nuestro data set y los puntos que nos interesan clasificar están hechos de variables predictoras que siempre están entre 0 y 15, estas se encuentran siempre contenidos en un *n* cubo con una longitud lateral de 15. Si queremos que 15 puntos alcancen una densidad requerida donde solo hay una variable predictora, la cantidad de puntos que necesitamos para un número *n* de variables predictoras es 15 a la *n*. 
+
+La razón es que nuestro volumen cambia a medida que la dimnesionalidad incrementa. En una dimensión, el volumen es solo el tamaño de una línea. Entonces tenemos solo una variable predictora en donde la densidad es 15/15 = 1 dado que hay 15 puntos en una línea de tamaño 15. Sin embargo, si tenemos dos variables predictoras, los data points están en un cuadrado de volumen 15² = 255. La densidad sería 15/225 con solo 15 data points. Para la densidad anterior, necesitamos 15² = 225 puntos. Este patrón funciona para altas dimensionalidades, en donde *n* dimensiones permite mantener el mismo promedio de densidad.
+
+## Árboles
