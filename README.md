@@ -201,4 +201,26 @@ Si nuestro data set y los puntos que nos interesan clasificar están hechos de v
 
 La razón es que nuestro volumen cambia a medida que la dimnesionalidad incrementa. En una dimensión, el volumen es solo el tamaño de una línea. Entonces tenemos solo una variable predictora en donde la densidad es 15/15 = 1 dado que hay 15 puntos en una línea de tamaño 15. Sin embargo, si tenemos dos variables predictoras, los data points están en un cuadrado de volumen 15² = 255. La densidad sería 15/225 con solo 15 data points. Para la densidad anterior, necesitamos 15² = 225 puntos. Este patrón funciona para altas dimensionalidades, en donde *n* dimensiones permite mantener el mismo promedio de densidad.
 
-## Árboles
+## Perceptrones
+
+En los enfoques anteriores nos hemos concentrado en estimar la probabilidad de que ciertos puntos son parte de ciertas clases. Tanto la clasificación logística como el análisis de discriminación linear funcionan de esta manera. 
+
+Sin embargo, no hay ninguna regla que demande encontrar líneas limite. Todo lo que necesitamos son divisiones lineares que separa correctamente las clases y una función que resulte cierta en un lado del divisor y falsa en el otro. 
+
+A esta función generalizadora se le conoce como un perceptrón. Se puede resumir como dos partes, un vector de pesos *-> w* y un sesos *b*. 
+La clase que un perceptrón elige para un punto depende de si las variables predictoras ponderadas del punto superan el sesgo.
+
+Por ejemplo, dado *-> w* y *b*, un pereceptrón resulta en 1 para una entrada *-> x* solo si *-> w ⋅ -> x ≥ b*. De otra manera el resultado es 0. Con estos dos resultados podemos distinguir entre dos clases. En la siguiente imagen tenemos a un vector de peso para un perceptrón, así como cuatro grupos de puntos.
+
+![Clases Perceptrón](https://ds055uzetaobb.cloudfront.net/brioche/uploads/Uycw43w1Es-ch2-4-2-finished.png?width=1200)
+
+En este caso, los puntos de clase verde nos darían resultados positivos si el perceptrón del sesgo es cero. Podemos ver que el vector de peso apunta hacía arriba y a la derecha del plano. Una de las propiedades del producto punto es que solo puede ser positivo cuando ambos vectores están a menos de 90° de cada uno. Por consecuencia, el grupo verde es enteramente una clase positiva dado que todos los puntos están a menos de 90° de *-> w*. 
+
+En el proceso de entrenar a un perceptrón, debemos corregir frecuentemente los pesos para lidiar con puntos mal clasificados. Por ejemplo, digamos que tenemos dos clases: azul y roja. Supongamos que nuestro perceptrón verá resultados positivos como rojos y negativos como azúl. Generalmente, si un punto *-> x* es mal clasificado como azul debemos de ajustar los pesos del vector *-> w* añadiendo *-> x* a este. En este caso, podríamos resovlerlo con la siguiente ecuación:
+
+    (*-> w + -> x) ⋅ -> x ≥  w ⋅ x
+ 
+Una de los propiedas del producto punto es que *-> x + -> x* es igual o mayor que 0 en todos los vectores *-> x*. Por lo que podríamos rescribir la ecuación así:
+
+    (*-> w + -> x) ⋅ -> x = -> w ⋅ -> x + -> x ⋅ -> x ≥ -> w ⋅ -> x
+    
