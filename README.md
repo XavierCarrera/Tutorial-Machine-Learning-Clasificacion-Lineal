@@ -224,3 +224,31 @@ Una de los propiedas del producto punto es que *-> x + -> x* es igual o mayor qu
 
     (*-> w + -> x) ⋅ -> x = -> w ⋅ -> x + -> x ⋅ -> x ≥ -> w ⋅ -> x
     
+Hemos visto en el último problema que si añadimos *-> x* a *-> w*, entonces *-> w ⋅ -> x* se vuelve más grande. Lo opuesto es cierto; al sustraer *-> x*, podemos ver como decrece *-> w ⋅ -> x*.
+
+El significado de esto es que nos permite editar los pesos del vector para asegurarnos que tenga un mejor desempeño clasificando cierto punto *-> x*. Si *-> w ⋅ -> x* es menos que *b* cuando debería ser mayor, podemos añadir *-> x a -> w* y podemos estar seguros que es más correcto que la forma anterior. La misma lógica aplica al caso opuesto. 
+
+Similarmente, podemos incrementar el sesgo por uno cuando *-> w ⋅ -> x ≥ b* incorrectamente y decrecer por uno en el caso opuesto. 
+
+A través de este proceso, repetido varias veces es siempre posible separar clases que son separables. Solo tenemos que ir entre cada punto de nuestro data set y si nuestro perceptrón se clasifica incorrectamente, añadimos el punto en el vector de ponderación. De esta manera, el perceptrón convergera con una solución tal como vemos en este ejemplo:
+
+![Perceptrón ponderado](https://ds055uzetaobb.cloudfront.net/uploads/jxNrRo3VTI-perceptron_training_without_bias.gif)
+
+Una forma más entender esto, es si una línea podría ser fácilmente dibujada para dividir dos grupos. Por ejemplo, podríamos crear una línea sencilla que divida los siguientes grupos:
+
+![Perceptrón divisible](https://ds055uzetaobb.cloudfront.net/brioche/uploads/PYGYbZYGws-ch2-4-5-1.png?width=1200)
+
+Sin embargo, tendríamos más problema de ubicar una linea en el siguiente gráfico:
+
+![Percetrón indivisible](https://ds055uzetaobb.cloudfront.net/brioche/uploads/8SHi0tv6QH-ch2-4-5-2.png?width=1200)
+
+## Naive Bayes
+
+El Teorema de Bayes puede ser utilizado para trabajar con variables discretas predictoras que sean valores cualitativos: colo de ojos, ciudade de origen, etc.
+
+Ahora lidearemos con otro modelo clásico de clasificación: Naive Bayes. En este enfoque asumimos que todas las variables predictoras son dependientes de una clase dada (por eso naive de inocente en inglés). Cuando las variables son independientes, es imposible obtener información sobre uno del otro. Por supuesto, las variables predictoras son las únicas que son independientes entre ellas. Aún así, necesitamos predecir el resultado de la variable.
+
+Como cualquier otro clasificador, el objetivo de Naive Vayes es tomar un set de variables predictoras *x1, x2, ... xn* y regresar una clase basada en sus valores. En este caso, podemos hacerlo al estimar la probabilidad *P(k|x1, x2..., xn)* por cada clase *k*.
+
+Podemos entonces ver que usando el teorema de Bayes, tendríamos lo siguiente: *P(k|x1, x2..., xn)* = *P(k|x1, x2..., xn) P(k)* / *P(k|x1, x2..., xn)* dado que las variables asumen ser independientes. Mostramos que *P(k|x1,x2,...,xn) = P(x1,x2,...,xn|k)P(k) / P(x1,x2,...,xn)*.
+
