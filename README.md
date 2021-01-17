@@ -252,3 +252,6 @@ Como cualquier otro clasificador, el objetivo de Naive Vayes es tomar un set de 
 
 Podemos entonces ver que usando el teorema de Bayes, tendríamos lo siguiente: *P(k|x1, x2..., xn)* = *P(k|x1, x2..., xn) P(k)* / *P(k|x1, x2..., xn)* dado que las variables asumen ser independientes. Mostramos que *P(k|x1,x2,...,xn) = P(x1,x2,...,xn|k)P(k) / P(x1,x2,...,xn)*.
 
+Naive Bayes también puede servir para trabajar con variables predictoras continuas en vez de cualitativas. Generalmente, esto se hace al asumir que las variables siguen una distribución gaussiana y que estimando la probabilidad de una posición en un punto dado podríamos saber que está en cierta clase usando una función de distribución de probabilidades. La función es dad por estimados de la desviación estándard y el promedio de cada clase. 
+
+Lo anterior podría sonar similar al análisis linear discriminante. Aunque ambas técnicas usan distribuciones gaussianas, el análisis linear discriminante asume que la desviación estándard de cada clase es la misma. Mientras tanto, Naive Bayes no hace tal suposición por lo que produce resultados diferentes. Sin embargo, estas técnincas son similatres en el caso de una variable si las desviaciones estándard son iguales 
