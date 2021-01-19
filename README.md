@@ -6,7 +6,7 @@ Uno de los problemas con los datos es que no siempre hay una continuidad entre e
 
 El propósito de Machine Learning es predecir valores desconocidos a partir de datos histórico. Imaginemos que tenemos un problema en el que tenemos datos de conejos, perros y pollos, con los cuales queremos entrenar a nuestro modelo para predecir animales por nosotros. Una regresión linear no sirve en estas circunstancias porque los valores son **categóricos** (cualitativos) en vez de numéricos. 
 
-## Matriz de Indicadores
+## 1. Matriz de Indicadores
 
 Para el problema anterior, podríamos proponer dos soluciones: 
 
@@ -56,7 +56,7 @@ lo cual es un valor por encima del valor que podría representar los datos de un
 
 Aunque las funciones son útiles para clasificar, hay que tomar en cuenta que no son la mejor manera de medir probabilidades. Al ser una función linear, es capaz de resultar en valores mayores a uno y menores a cero. Esto no nos sirve si estamos midiendo probabilidades. Al presentar el problema de esta forma, podemos producir valores negativos o que son demasiado grandes. 
 
-## Clasificación Logística
+## 2. Clasificación Logística
 
 Transformar una función de clasificación linear en una función de clasificación sigmoidal es muy útil cuando estamos trabajando con probabilidades. 
 
@@ -114,7 +114,7 @@ Alternativamete, podríamos tomar una función logística y tranformarla en loga
 
 Esta función linear se le conoce como logit. Aunque no es buena calculando probabilidades, es útil para comparasiones y optimizaciones. Esta es una alternativa cuando tenemos resultados extraños con una función logística.
 
-## Análisis Discriminante Linear
+## 3. Análisis Discriminante Linear
 
 Con regregresión lineal podemos predecir correctamente la clase a la que perenecen unos data points. Sin embargo, este enfoque puede ser inestable ya que genera una linea directamente de los datos. 
 
@@ -179,7 +179,7 @@ Por ejemplo, si tenemos *n* cantidad de puntos y dos clases, un data point *x = 
 
     π1 = √2π ⋅ (0.5 ⋅ 0.28) = 0.35
     
-## Clasificación KNN
+## 4. Clasificación KNN
 
 La clasificación linear no es el único tipo de algoritmo de clasificación. Existen varias alternativas no-lineares, de las cuales la clasificación del vecino *k* más cercano (KNN por sus siglas en inglés) es la más simple. 
 
@@ -201,7 +201,7 @@ Si nuestro data set y los puntos que nos interesan clasificar están hechos de v
 
 La razón es que nuestro volumen cambia a medida que la dimnesionalidad incrementa. En una dimensión, el volumen es solo el tamaño de una línea. Entonces tenemos solo una variable predictora en donde la densidad es 15/15 = 1 dado que hay 15 puntos en una línea de tamaño 15. Sin embargo, si tenemos dos variables predictoras, los data points están en un cuadrado de volumen 15² = 255. La densidad sería 15/225 con solo 15 data points. Para la densidad anterior, necesitamos 15² = 225 puntos. Este patrón funciona para altas dimensionalidades, en donde *n* dimensiones permite mantener el mismo promedio de densidad.
 
-## Perceptrones
+## 5. Perceptrones
 
 En los enfoques anteriores nos hemos concentrado en estimar la probabilidad de que ciertos puntos son parte de ciertas clases. Tanto la clasificación logística como el análisis de discriminación linear funcionan de esta manera. 
 
@@ -242,7 +242,7 @@ Sin embargo, tendríamos más problema de ubicar una linea en el siguiente gráf
 
 ![Percetrón indivisible](https://ds055uzetaobb.cloudfront.net/brioche/uploads/8SHi0tv6QH-ch2-4-5-2.png?width=1200)
 
-## Naive Bayes
+## 6. Naive Bayes
 
 El Teorema de Bayes puede ser utilizado para trabajar con variables discretas predictoras que sean valores cualitativos: colo de ojos, ciudade de origen, etc.
 
