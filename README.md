@@ -201,7 +201,9 @@ Si nuestro data set y los puntos que nos interesan clasificar están hechos de v
 
 La razón es que nuestro volumen cambia a medida que la dimnesionalidad incrementa. En una dimensión, el volumen es solo el tamaño de una línea. Entonces tenemos solo una variable predictora en donde la densidad es 15/15 = 1 dado que hay 15 puntos en una línea de tamaño 15. Sin embargo, si tenemos dos variables predictoras, los data points están en un cuadrado de volumen 15² = 255. La densidad sería 15/225 con solo 15 data points. Para la densidad anterior, necesitamos 15² = 225 puntos. Este patrón funciona para altas dimensionalidades, en donde *n* dimensiones permite mantener el mismo promedio de densidad.
 
-## 5. Perceptrones
+## Bonus: Algunos Conceptos Importantes para Entender Clasificación Linear
+
+### Perceptrones
 
 En los enfoques anteriores nos hemos concentrado en estimar la probabilidad de que ciertos puntos son parte de ciertas clases. Tanto la clasificación logística como el análisis de discriminación linear funcionan de esta manera. 
 
@@ -242,7 +244,7 @@ Sin embargo, tendríamos más problema de ubicar una linea en el siguiente gráf
 
 ![Percetrón indivisible](https://ds055uzetaobb.cloudfront.net/brioche/uploads/8SHi0tv6QH-ch2-4-5-2.png?width=1200)
 
-## 6. Naive Bayes
+### Naive Bayes
 
 El Teorema de Bayes puede ser utilizado para trabajar con variables discretas predictoras que sean valores cualitativos: colo de ojos, ciudade de origen, etc.
 
