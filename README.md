@@ -8,8 +8,6 @@ Si tienes alguna pregunta, no dudes en contactarme en Twitter: @XaviGrowth
 
 Nota 1: La notación para vectores es en negritas. Es decir, podrás identificar a los vectores cuando aparezcan de la siguiente manera: **y**.
 
-Nota 2: Los términos error cuadrado y error cuadrático no son diferentes.
-
 ## Introducción
 
 Uno de los problemas con los datos es que no siempre hay una continuidad entre ellos. En estos casos nos referimos a un problema que no se puede explicar cuantitativamente sino cualitativamente. Es decir, los problemas de clasificación. Lidiar con ellos usando regresión linear es complicado, por lo que es necesario ocupar otras técnicas.
@@ -262,4 +260,4 @@ Podemos entonces ver que usando el teorema de Bayes, tendríamos lo siguiente: *
 
 Naive Bayes también puede servir para trabajar con variables predictoras continuas en vez de cualitativas. Generalmente, esto se hace al asumir que las variables siguen una distribución gaussiana y que estimando la probabilidad de una posición en un punto dado podríamos saber que está en cierta clase usando una función de distribución de probabilidades. La función es dada por estimados de la desviación estándard y el promedio de cada clase. 
 
-Lo anterior podría sonar similar al análisis lineal discriminante. Aunque ambas técnicas usan distribuciones gaussianas, el análisis lineal discriminante asume que la desviación estándard de cada clase es la misma. Mientras tanto, Naive Bayes no hace tal suposición por lo que produce resultados diferentes. Sin embargo, estas técnincas son similatres en el caso de una variable si las desviaciones estándard son iguales 
+Lo anterior podría sonar similar al análisis lineal discriminante. Aunque ambas técnicas usan distribuciones gaussianas, el análisis lineal discriminante asume que la desviación estándard de cada clase es la misma. Mientras tanto, Naive Bayes no hace tal suposición por lo que produce resultados diferentes. Sin embargo, estas técnincas son similatres en el caso de una variable si las desviaciones estándard son iguales. 
