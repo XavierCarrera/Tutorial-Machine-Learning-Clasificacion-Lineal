@@ -100,7 +100,7 @@ Hay que tomar en cuenta que no todas las funciones de probabilidad son iguales. 
 
 Si asignamos a cada punto **xi** una variable *yi* que está puesta a 1 si **x** es positiva y 0 si es negativa, expresado matemáticamente, se vería así:
 
-![funcion sigmoide](asdsa.as)
+![funcion sigmoide](https://github.com/XavierCarrera/Tutorial-Machine-Learning-Clasificacion-Lineal/blob/main/img/funcion_sigmoide.png?raw=true)
 
 La probabilidad de que todos los puntos conocidos tengan una clase es lo que llamamos maximización en algoritmos de clasificación logística. El proceso es conocido como el **método de máxima verosimilitud** porque encontramos la similitud más posible en una función sigmoide.
 
@@ -120,7 +120,7 @@ Por ejemplo, si clasificamos entre rojo y azul y los límites de probabilidad so
 
 Alternativamete, podríamos tomar una función logística y tranformarla en logarítmica. Tomando el logaritmo de una regresión logística nos da una función lineal que matemáticamente se ve así:
 
-![mate logarítmica](asdas.as)
+![mate logarítmica](https://github.com/XavierCarrera/Tutorial-Machine-Learning-Clasificacion-Lineal/blob/main/img/funcion_logaritmica.png?raw=true)
 
 Esta función lineal se le conoce como logit. Aunque no es buena calculando probabilidades, es útil para comparasiones y optimizaciones. Esta es una alternativa cuando tenemos resultados extraños con una función logística.
 
@@ -162,26 +162,26 @@ Ahora, necesitamos calcular la probabilidad de densidad para los puntos en cada 
 
 Cuando hay múltiples variables predictoras, una matriz de valores de covarianza es necesaria para representar adecuadamente las varianzas de las distribuciones gaussianas. En este caso, lo podemos entender con la varianza de un conjunto de puntos que tanto están alejados de su promedio. Antes de calcular la varianza de estos data points, tenemos que eliminar el promedio con la siguiente formula:
 
-![promedio varianza](asdasdas.as)
+![promedio varianza](https://github.com/XavierCarrera/Tutorial-Machine-Learning-Clasificacion-Lineal/blob/main/img/varianza.png?raw=true)
 
 Aquí *yi* representa la clase de *xi*. Su valor puede ir de 1 a *K*. Adicionalmente, *nk* es el número de data points en la clase *k*.
 
 Con el promedio de cada clase calculada, es ahora posible calcular la varianza con la siguiente fórmula: 
 
 
-![promedio varianza](asdasdas.as)
+![promedio varianza](https://github.com/XavierCarrera/Tutorial-Machine-Learning-Clasificacion-Lineal/blob/main/img/calculo_promedio_varianzas.png?raw=true)
 
 Finalmente, tenemos que tener los valores que necesitamos para calcular la probabilidad que el punto *x* esté en la clase *k*.
 
 Sin embargo, tenemos que formalmente definir una distribución gaussiana primero. Con la varianza σ² y un promedio μk que sigue la distribución gaussiana significa que 
 
-![promedio varianza](asdasdas.as)
+![promedio varianza](https://github.com/XavierCarrera/Tutorial-Machine-Learning-Clasificacion-Lineal/blob/main/img/calculo_varianza.png?raw=true)
 
 Adicionalmente, dado que cada punto debe estar una de nuestras clases, *P(X = x)* es la suma de *P(X = x|k)* por 1 ≤ *k* ≤ *K* y *P(k)* es igual al πk que hemos calculado antes. 
 
 Por ello nuestro teorema se ve así: 
 
-![Teorema de Bayes](varianza)
+![Teorema de Bayes](https://github.com/XavierCarrera/Tutorial-Machine-Learning-Clasificacion-Lineal/blob/main/img/bayes_varianza.png?raw=true)
 
 Esto nos da la función *pk(x)* = *P(k|X = x)* que nos indica que nuestra certeza de que el punto *x* está en la clase *k*. Si los puntos en nuestro data set tienen una varianza constante y siguen perfectamente distribuciones gaussianas, esta probabilidad está cerca a nuestra mejor estimación. Sin embargo, esta función es muy precica aún con las limitaciones de la vida real. Especialmente cuando hay más de dos clases, tiene un desempeño mejor que la regresión logística.
 
@@ -228,13 +228,9 @@ Por ejemplo, dado **w** y *b*, un pereceptrón resulta en 1 para una entrada **x
 
 En este caso, los puntos de clase verde nos darían resultados positivos si el perceptrón del sesgo es cero. Podemos ver que el vector de peso apunta hacía arriba y a la derecha del plano. Una de las propiedades del producto punto es que solo puede ser positivo cuando ambos vectores están a menos de 90° de cada uno. Por consecuencia, el grupo verde es enteramente una clase positiva dado que todos los puntos están a menos de 90° de **w**. 
 
-En el proceso de entrenar a un perceptrón, debemos corregir frecuentemente los pesos para lidiar con puntos mal clasificados. Por ejemplo, digamos que tenemos dos clases: azul y roja. Supongamos que nuestro perceptrón verá resultados positivos como rojos y negativos como azúl. Generalmente, si un punto **x** es mal clasificado como azul debemos de ajustar los pesos del vector **w** añadiendo **x** a este. En este caso, podríamos resovlerlo con la siguiente ecuación:
-
-    (**w** + **x**) ⋅ **x** ≥  w ⋅ x
+En el proceso de entrenar a un perceptrón, debemos corregir frecuentemente los pesos para lidiar con puntos mal clasificados. Por ejemplo, digamos que tenemos dos clases: azul y roja. Supongamos que nuestro perceptrón verá resultados positivos como rojos y negativos como azúl. Generalmente, si un punto **x** es mal clasificado como azul debemos de ajustar los pesos del vector **w** añadiendo **x** a este. En este caso, podríamos resovlerlo con la siguiente ecuación: (**w** + **x**) ⋅ **x** ≥  w ⋅ x
  
-Una de las propiedades del producto punto es que **x** + **x** es igual o mayor que 0 en todos los vectores **x**. Por lo que podríamos rescribir la ecuación así:
-
-    (**w** + **x**) ⋅ **x** = **w** ⋅ **x** + **x** ⋅ **x** ≥ **w** ⋅ **x**
+Una de las propiedades del producto punto es que **x** + **x** es igual o mayor que 0 en todos los vectores **x**. Por lo que podríamos rescribir la ecuación así: (**w** + **x**) ⋅ **x** = **w** ⋅ **x** + **x** ⋅ **x** ≥ **w** ⋅ **x**
     
 Hemos visto en el último problema que si añadimos **x** a **w**, entonces **w** ⋅ **x** se vuelve más grande. Lo opuesto es cierto; al sustraer **x**, podemos ver como decrece **w** ⋅ **x**.
 
